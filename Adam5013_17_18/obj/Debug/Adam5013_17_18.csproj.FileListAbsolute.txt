@@ -1,0 +1,16 @@
+E:\二维槽\Adam5013_17_18\obj\Debug\Adam5013_17_18.csprojResolveAssemblyReference.cache
+E:\二维槽\Adam5013_17_18\obj\Debug\Adam5013_17_18.Form1.resources
+E:\二维槽\Adam5013_17_18\obj\Debug\Adam5013_17_18.Properties.Resources.resources
+E:\二维槽\Adam5013_17_18\obj\Debug\Adam5013_17_18.csproj.GenerateResource.Cache
+E:\二维槽\Adam5013_17_18\bin\Debug\Adam5013_17_18.exe
+E:\二维槽\Adam5013_17_18\bin\Debug\Adam5013_17_18.pdb
+E:\二维槽\Adam5013_17_18\bin\Debug\Advantech.Adam.dll
+E:\二维槽\Adam5013_17_18\bin\Debug\Advantech.Common.dll
+E:\二维槽\Adam5013_17_18\bin\Debug\Advantech.Graph.dll
+E:\二维槽\Adam5013_17_18\bin\Debug\Advantech.Protocol.dll
+E:\二维槽\Adam5013_17_18\bin\Debug\Advantech.Adam.xml
+E:\二维槽\Adam5013_17_18\bin\Debug\Advantech.Common.xml
+E:\二维槽\Adam5013_17_18\bin\Debug\Advantech.Graph.xml
+E:\二维槽\Adam5013_17_18\bin\Debug\Advantech.Protocol.xml
+E:\二维槽\Adam5013_17_18\obj\Debug\Adam5013_17_18.exe
+E:\二维槽\Adam5013_17_18\obj\Debug\Adam5013_17_18.pdb
