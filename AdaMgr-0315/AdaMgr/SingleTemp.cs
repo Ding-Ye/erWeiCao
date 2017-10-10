@@ -16,7 +16,7 @@ namespace AdaMgr
     {
         int sequence = 0;
         Random ran = new Random();
-        SmplPBForm sm = new SmplPBForm();
+        //SmplPBForm sm = new SmplPBForm();
 
         PointPairList list1 = new PointPairList();
         PointPairList list2 = new PointPairList();
@@ -218,21 +218,21 @@ namespace AdaMgr
         {
             zedGraphControl1.GraphPane.XAxis.Scale.MaxAuto = true;
            double x = (double)new XDate(DateTime.Now.AddMinutes(0));
-           string st2 = sm.open();
-           string[] a = sm.cut(st2);
+           //string st2 = sm.open();
+           //string[] a = sm.cut(st2);
          
           //  double y1 = FrmMain.realTimeValue[4][FrmMain.realTimeValue[4].Count-1];
             //double y2 = FrmMain.realTimeValue[9][FrmMain.realTimeValue[9].Count - 1];
            // double y3 = FrmMain.realTimeValue[12][FrmMain.realTimeValue[12].Count - 1];
 
-           double y1 = Convert.ToInt32(a[16]);
-           double y2 = Convert.ToInt32(a[21]);
-           double y3 = Convert.ToInt32(a[24]);
+           //double y1 = Convert.ToInt32(a[16]);
+           //double y2 = Convert.ToInt32(a[21]);
+           //double y3 = Convert.ToInt32(a[24]);
 
 
-            list1.Add(x, y1);
-            list3.Add(x, y2);
-            list4.Add(x, y3);
+            //list1.Add(x, y1);
+            //list3.Add(x, y2);
+            //list4.Add(x, y3);
 
             if (list1.Count >= 60)
             {

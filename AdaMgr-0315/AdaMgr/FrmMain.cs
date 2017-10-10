@@ -40,7 +40,8 @@ namespace AdaMgr
         public AdamCom adamCom;//Adam 的com口
 
         private int m_iAddr = 1;//模块地址，adamCom.AnalogInput(m_iAddr).GetValues(nSlot, nChTotal, out fVal)
-
+        private int m_iSlot = 0;
+        private byte m_byRange, m_byFormat;
         private bool m_bAscendButtom = false;//上升按钮控制返回值
 
         private bool m_bDescButtom = false;  //下降按钮控制返回值
@@ -78,7 +79,7 @@ namespace AdaMgr
         private System.Threading.Timer threadTimer1 = null;//局部变量Timer，供水位上升时计时
 
         private System.Threading.Timer threadTimer2 = null;//局部变量Timer，供水位下降时计时
-        SmplPBForm sm = new SmplPBForm();
+
 
         public FrmMain()
         {
@@ -86,11 +87,11 @@ namespace AdaMgr
 
             Control.CheckForIllegalCrossThreadCalls = false;//允许跨线程调用,访问窗口中的控件
 
-            AdamMeterFromInit();//温度和函数率初始化
+           // AdamMeterFromInit();//温度和函数率初始化
 
             WaterLevelControl();//创建水位控制新线程
 
-            Adam5013GetTemp();//通过com1口，连接advantech
+            AdamOpenCom(); //打开端口
 
             panel1.Height = 344 - (int)((344 / 3000.0) * realTimeWaterValue);//水位值显示的高度
         }
@@ -108,13 +109,7 @@ namespace AdaMgr
             listTempLabel.Add(label8);
             listTempLabel.Add(label9);
             listTempLabel.Add(label10);
-            listTempLabel.Add(label11);
-            listTempLabel.Add(label12);
-            listTempLabel.Add(label13);
-            listTempLabel.Add(label14);
-            listTempLabel.Add(label15);
-            // listTempLabel.Add(label16);
-            // listTempLabel.Add(label17);
+
 
             //温度label19--label33
             listTdrLabel.Add(label19);
@@ -125,13 +120,10 @@ namespace AdaMgr
             listTdrLabel.Add(label24);
             listTdrLabel.Add(label25);
             listTdrLabel.Add(label26);
-            listTdrLabel.Add(label27);
-            listTdrLabel.Add(label28);
             listTdrLabel.Add(label29);
             listTdrLabel.Add(label30);
             listTdrLabel.Add(label31);
-            // listTdrLabel.Add(label32);
-            //listTdrLabel.Add(label33);
+
 
             //基质势label
             listMpLabel.Add(label44);
@@ -145,13 +137,6 @@ namespace AdaMgr
             listMpLabel.Add(label36);
             listMpLabel.Add(label32);
             listMpLabel.Add(label33);
-            listMpLabel.Add(label17);
-            listMpLabel.Add(label16);
-
-
-            //   string st2 = sm.open();
-            //  string[] a = sm.cut(st2);
-            //  Console.WriteLine(a[3]);
 
 
             for (int i = 0; i < listTempLabel.Count; i++)     //cout为集合中包含的元素数
@@ -375,9 +360,7 @@ namespace AdaMgr
             bRet = adamCom.DigitalOutput(m_iAddr).SetValue(iSlot, iCh, val == true);
             if (!bRet)
                 MessageBox.Show("Set digital " + iCh + " Ch output failed!", "Error");
-            //bRet = adamCom.DigitalOutput(m_iAddr).SetValue(iSlot, iCh+1, false);
-            // if (!bRet)
-            //    MessageBox.Show("Set digital " + (iCh+1) + " Ch output failed!", "Error");
+     
         }
 
         //timer1做的所有事!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -385,91 +368,52 @@ namespace AdaMgr
         {
 
             // this.Adam5017GetWaterLevel();//获取水位值，并显示到图中
-            timeCount++;
-            
-            string st3 = sm.open();
-            string[] a1 = sm.cut(st3);//至此得到一个切割好的数组，里面有36组数据
-            for (int i = 0; i < listTdrLabel.Count; i++)
+           // Adam5017GetVlote();
+            Adam5017GetVlote();
+            if (m_iSlot >= 0 && m_iSlot < 3)
             {
-                waterValue[i] = (float)Convert.ToDouble(a1[i]);
-
+                m_iSlot++;
             }
-            for (int i = 0; i < listTempLabel.Count; i++)
-            {
-                tempValue[i] = Convert.ToDouble(a1[i + 13]);
-            }
-            for (int i = 0; i < listMpLabel.Count; i++)
-            {
-                tdrValue[i] = (float)Convert.ToDouble(a1[i + 26]);
-
-            }
-
-
-           // textBox1.Text = timeCount.ToString();
-            if (timeCount == 5) //计数，计时60秒时，进行以下操作
-            {
-                timeCount = 0;
-                this.DBInsertTemp();//向数据库存入温度
-                this.DBInsertWaterLevel();//向数据库存入实时水位值
-              //  this.DBInserttdr();
-             //   this.DBInsertWater();
-               // string st2 = sm.open();
-               // string[] a = sm.cut(st2);
-
-                //给15个listTempLabel的文本循环赋值
-                //最后显示的地方！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-                for (int i = 0; i < listTempLabel.Count; i++)
-                {
-                    //float tmp = (float)(ran.Next(20, 30) + 0.01 * ran.Next(0, 100));
-                    listTempLabel[i].Text = a1[i]; ;
-                }
-                for (int j = 0; j < listTdrLabel.Count; j++)
-                {
-                    listTdrLabel[j].Text = a1[j + 13];
-                }
-                for (int k = 0; k < listMpLabel.Count; k++)
-                {
-                    listMpLabel[k].Text = a1[k + 26];
-                }
-            }
+            else
+                m_iSlot = 0;
         }
 
         //5017获取实时水位值
-        public void Adam5017GetWaterLevel()
-        {
-            /*
-             * Get channel values when the data format is set to engineering unit or ohms(ADAM-5013 on ADAM-5000). 
-           格式：public bool GetValues(
-                   int i_iSlot,
-                   int i_iChannelTotal,
-                   out float[] o_fValues
-               );
-             */
+        //public void Adam5017GetWaterLevel()
+        //{
+        //    /*
+        //     * Get channel values when the data format is set to engineering unit or ohms(ADAM-5013 on ADAM-5000). 
+        //   格式：public bool GetValues(
+        //           int i_iSlot,
+        //           int i_iChannelTotal,
+        //           out float[] o_fValues
+        //       );
+        //     */
 
-            float[] fVal;
+        //    float[] fVal;
 
-            int nSlot = 2; //Slot index.(槽指数) The value is between 0~7 
+        //    int nSlot = 2; //Slot index.(槽指数) The value is between 0~7 
 
-            int nChTotal = 8;//The total of the channels. The value is between 1~8
+        //    int nChTotal = 8;//The total of the channels. The value is between 1~8
 
-            //???
-            if (adamCom.AnalogInput(m_iAddr).GetValues(nSlot, nChTotal, out fVal))//成功返回true，否则false
-            {
+        //    //???
+        //    if (adamCom.AnalogInput(m_iAddr).GetValues(nSlot, nChTotal, out fVal))//成功返回true，否则false
+        //    {
 
-                lbDigitalMeter0.Value = (int)(1000 * fVal[0] - 1000);//获取实时的水位高度
+        //        lbDigitalMeter0.Value = (int)(1000 * fVal[0] - 1000);//获取实时的水位高度
 
-                //水位测量器显示值赋值
-                realTimeWaterValue = (int)lbDigitalMeter0.Value; //lbDigitalMeter0.Value = realTimeWaterValue; 
+        //        //水位测量器显示值赋值
+        //        realTimeWaterValue = (int)lbDigitalMeter0.Value; //lbDigitalMeter0.Value = realTimeWaterValue; 
 
-                panel1.Height = 344 - (int)((344 / 3000.0) * realTimeWaterValue);//用白色覆盖绿色，panel1水位显示
+        //        panel1.Height = 344 - (int)((344 / 3000.0) * realTimeWaterValue);//用白色覆盖绿色，panel1水位显示
 
-            }
-            else
-            {
-                timer1.Enabled = false;
-                MessageBox.Show("Water Level Failed to get!");
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        timer1.Enabled = false;
+        //        MessageBox.Show("Water Level Failed to get!");
+        //    }
+        //}
 
         //向数据库存入15路温度值
         private void DBInsertTemp()
@@ -490,6 +434,7 @@ namespace AdaMgr
             }
         }
 
+        //向数据库存入水的高度值
         private void DBInsertWater() 
         {
             sql = String.Format(sqlwater, waterValue[0], waterValue[1], waterValue[2], waterValue[3], waterValue[4], waterValue[5],
@@ -508,6 +453,7 @@ namespace AdaMgr
             }
         }
 
+        //向数据库存入ttr值
         private void DBInserttdr()
         {
             sql = String.Format(sqltdr, tdrValue[0], tdrValue[1], tdrValue[2], tdrValue[3], tdrValue[4], tdrValue[5],
@@ -544,45 +490,48 @@ namespace AdaMgr
 
         }
 
+
+        
+
         //通过com1口，连接advantech
-        public void Adam5013GetTemp()
-        {
-            //设置com1口
-            int m_iCom = 8;
+        //public void Adam5013GetTemp()
+        //{
+        //    //设置com1口
+        //    int m_iCom = 8;
 
-            //int m_iAddr = 1;
-            // int m_iSlot = 3;
+        //    //int m_iAddr = 1;
+        //    // int m_iSlot = 3;
 
-            adamCom = new AdamCom(m_iCom);
+        //    adamCom = new AdamCom(m_iCom);
 
-            adamCom.Checksum = false; // disbale checksum; Get/Set Checksum status when module runs on ASCII protocol. 
+        //    adamCom.Checksum = false; // disbale checksum; Get/Set Checksum status when module runs on ASCII protocol. 
 
-            //int m_iChTotal = AnalogInput.GetChannelTotal(Adam5000Type.Adam5013);
+        //    //int m_iChTotal = AnalogInput.GetChannelTotal(Adam5000Type.Adam5013);
 
-            if (adamCom.OpenComPort())   //OpenComPort,打开COM端口和从系统获得的串行通讯端口设置,True if port opened successfully.
-            {
-                // set COM port state, 9600,N,8,1
+        //    if (adamCom.OpenComPort())   //OpenComPort,打开COM端口和从系统获得的串行通讯端口设置,True if port opened successfully.
+        //    {
+        //        // set COM port state, 9600,N,8,1
 
-                adamCom.SetComPortState(Baudrate.Baud_9600, Databits.Eight, Parity.None, Stopbits.One);
+        //        adamCom.SetComPortState(Baudrate.Baud_9600, Databits.Eight, Parity.None, Stopbits.One);
 
-                // set COM port timeout
+        //        // set COM port timeout
 
-                adamCom.SetComPortTimeout(500, 500, 0, 500, 0);
+        //        adamCom.SetComPortTimeout(500, 500, 0, 500, 0);
 
-                timer1.Enabled = true;
+        //        timer1.Enabled = true;
 
-                //timer1.Enabled = false;
+        //        //timer1.Enabled = false;
 
-            }
-            else
-            {
-                MessageBox.Show("Failed to open COM port!", "Error");
-                timer1.Enabled = false;
-            }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Failed to open COM port!", "Error");
+        //        timer1.Enabled = false;
+        //    }
 
-        }
+        //}
 
-
+        //实时绘图
         private void lbButton1_Click(object sender, EventArgs e)
         {
             SingleTemp singleTemp = new SingleTemp();
@@ -606,12 +555,14 @@ namespace AdaMgr
 
         }
 
+        //tdr报表绘图
         private void lbButton20_Click_(object sender, EventArgs e)
         {
             tdr tdr = new tdr();
             tdr.Show();
         }
 
+        //水高度报表绘图
         private void lbButton90_Click(object sender, EventArgs e)
         {
             Water water = new Water();
@@ -622,7 +573,7 @@ namespace AdaMgr
         //控制水位上升按钮
         private void lbButton4_Click(object sender, EventArgs e)
         {
-            int iSlot = 0;
+            int iSlot = 4;
             if (m_bAscendButtom == false)
             {
                 m_bAscendButtom = true;
@@ -641,7 +592,7 @@ namespace AdaMgr
         //控制水位下降按钮
         private void lbButton5_Click(object sender, EventArgs e)
         {
-            int iSlot = 0;
+            int iSlot = 4;
             if (m_bDescButtom == false)
             {
                 m_bDescButtom = true;
@@ -730,6 +681,107 @@ namespace AdaMgr
         private void FrmMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+
+
+
+
+        public void AdamOpenCom()
+        {
+            int m_iCom = 3;		// using COM3  选择com号
+            adamCom = new AdamCom(m_iCom);
+            adamCom.Checksum = false; // disbale checksum
+
+
+           //int m_iSlot = 0;	// the slot index of the module 控制槽的位置
+            if (adamCom.OpenComPort())
+            {
+                adamCom.SetComPortState(Baudrate.Baud_9600, Databits.Eight, Parity.None, Stopbits.One);
+                adamCom.SetComPortTimeout(500, 500, 0, 500, 0);
+                timer1.Enabled = true; // enable timer
+            }
+            else
+                MessageBox.Show("Failed to open COM port!", "Error");
+        }
+
+        private bool RefreshChannelRange()//通道范围刷新
+        {
+            bool bRet;
+            byte byIntegration;
+            bRet = adamCom.AnalogInput(m_iAddr).GetRangeIntegrationDataFormat(m_iSlot, out m_byRange, out byIntegration, out m_byFormat);
+            if (!bRet)
+                MessageBox.Show("Get range failed!", "Error");
+            return bRet;
+        }
+
+
+
+        private void Adam5017GetVlote()//通道值更新
+        {
+            float[] fVal;
+
+            string szFormat;
+
+            if (adamCom.AnalogInput(m_iAddr).GetValues(m_iSlot, 8, out fVal))
+            {
+                szFormat = AnalogInput.GetFloatFormat(Adam5000Type.Adam5017, m_byRange);
+
+                switch (m_iSlot)
+                {
+                    case 0:
+                        {
+                            label3.Text = fVal[0].ToString(szFormat);
+                            label4.Text = fVal[1].ToString(szFormat);
+                            label5.Text = fVal[2].ToString(szFormat);
+                            label6.Text = fVal[3].ToString(szFormat);
+                            label7.Text = fVal[4].ToString(szFormat);
+                            label8.Text = fVal[5].ToString(szFormat);
+                            label9.Text = fVal[6].ToString(szFormat);
+                            label10.Text = fVal[7].ToString(szFormat); 
+                            break;
+                        }
+
+                    case 1:
+                        {
+                            label19.Text = fVal[0].ToString(szFormat);
+                            label20.Text = fVal[1].ToString(szFormat);
+                            label21.Text = fVal[2].ToString(szFormat);
+                            label22.Text = fVal[3].ToString(szFormat);
+                            label23.Text = fVal[4].ToString(szFormat);
+                            label24.Text = fVal[5].ToString(szFormat);
+                            label25.Text = fVal[6].ToString(szFormat);
+                            label26.Text = fVal[7].ToString(szFormat);
+                            break;
+                        }
+
+                    case 2:
+                        {
+                            label44.Text = fVal[0].ToString(szFormat) ;
+                            label43.Text = fVal[1].ToString(szFormat) ;
+                            label42.Text = fVal[2].ToString(szFormat) ;
+                            label41.Text = fVal[3].ToString(szFormat) ;
+                            label40.Text = fVal[4].ToString(szFormat) ;
+                            label39.Text = fVal[5].ToString(szFormat) ;
+                            label38.Text = fVal[6].ToString(szFormat) ;
+                            label37.Text = fVal[7].ToString(szFormat) ;
+                            break;
+                        }
+
+                    case 3:
+                        {
+                            label33.Text = fVal[0].ToString(szFormat) ;
+                            label32.Text = fVal[1].ToString(szFormat) ;
+                            label30.Text = fVal[2].ToString(szFormat) ;
+                            label31.Text = fVal[3].ToString(szFormat) ;
+                            label36.Text = fVal[4].ToString(szFormat) ;
+                            label46.Text = fVal[5].ToString(szFormat) ;
+                            label47.Text = fVal[6].ToString(szFormat) ;
+                            label48.Text = fVal[7].ToString(szFormat) ;
+                            break;
+                        }
+                }
+            }
         }
     }
 }

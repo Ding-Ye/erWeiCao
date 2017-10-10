@@ -13,47 +13,42 @@ namespace Adam5013_17_18
 {
     public partial class Form1 : Form
     {
-        private int m_iCom, m_iAddr, m_iSlot, m_iCount, m_iChTotal;//COM号 从地址 控制槽 计数？？ 每个槽有效通道数
-        private bool m_bStart;
+        private int m_iCom, m_iAddr, m_iSlot, m_iChTotal;//COM号 从地址 控制槽 计数？？ 每个槽有效通道数
         private byte m_byRange, m_byFormat;
-        //private string m_szIP;
         private Adam5000Type m_Adam5000Type;
         private AdamCom adamCom;
-        //private AdamSocket adamSocket;
-
 
         public Form1()
         {
             InitializeComponent();
-
-             // set to true for module on ADAM-5000; set to false for module on ADAM-5000/TCP
-     
-            m_iCom = 3;		// using COM2  选择com号
+            m_iCom = 3;		// using COM3  选择com号
             adamCom = new AdamCom(m_iCom);
             adamCom.Checksum = false; // disbale checksum
             
          
             m_iAddr = 1;	// the slave address is 1
             m_iSlot = 0;	// the slot index of the module 控制槽的位置
-            m_iCount = 0;	// the counting start from 0   ??计数有什么用
-            m_bStart = false;
-            //m_Adam5000Type = Adam5000Type.Adam5013; // the sample is for ADAM-5013
-            m_Adam5000Type = Adam5000Type.Adam5017; // the sample is for ADAM-5017
-                                                    // m_Adam5000Type = Adam5000Type.Adam5018; // the sample is for ADAM-5018
-
+            m_Adam5000Type = Adam5000Type.Adam5017; 
+                                                   
             m_iChTotal = AnalogInput.GetChannelTotal(m_Adam5000Type);
 
-            txtModule.Text = m_Adam5000Type.ToString();
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)//当界面关闭时，定时器关闭，端口关闭
-        {
-            if (m_bStart)
+            if (adamCom.OpenComPort())
             {
-                timer1.Enabled = false; // disable timer
-                adamCom.CloseComPort(); // close the COM port
-         
+                // set COM port state, 9600,N,8,1
+                adamCom.SetComPortState(Baudrate.Baud_9600, Databits.Eight, Parity.None, Stopbits.One);
+                // set COM port timeout
+                adamCom.SetComPortTimeout(500, 500, 0, 500, 0);
+            
+                if (RefreshChannelRange())
+                {
+
+                    timer1.Enabled = true; // enable timer
+                }
+                else
+                    adamCom.CloseComPort();
             }
+            else
+                MessageBox.Show("Failed to open COM port!", "Error");
         }
 
         /// <summary>
@@ -63,7 +58,7 @@ namespace Adam5013_17_18
         /// <param name="e"></param>
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (m_iSlot >= 0 && m_iSlot <= 3)
+            if (m_iSlot >= 0 && m_iSlot < 3)
             {
                 m_iSlot++;
             }
@@ -71,48 +66,9 @@ namespace Adam5013_17_18
                 m_iSlot = 0;
         }
 
-        private void buttonStart_Click(object sender, EventArgs e)//开始按钮
-        {
-            if (m_bStart) // was started
-            {
-                m_bStart = false;
-                timer1.Enabled = false;
-                adamCom.CloseComPort();
-              
-                buttonStart.Text = "Start";
-            }
-            else
-            {
-                if (adamCom.OpenComPort())
-                {
-                    // set COM port state, 9600,N,8,1
-                    adamCom.SetComPortState(Baudrate.Baud_9600, Databits.Eight, Parity.None, Stopbits.One);
-                    // set COM port timeout
-                    adamCom.SetComPortTimeout(500, 500, 0, 500, 0);
-                    m_iCount = 0; // reset the reading counter
-                                  //
-                    if (RefreshChannelRange())
-                    {
-
-                        timer1.Enabled = true; // enable timer
-                        buttonStart.Text = "Stop";
-                        m_bStart = true; // starting flag
-                    }
-                    else
-                        adamCom.CloseComPort();
-                }
-                else
-                    MessageBox.Show("Failed to open COM port!", "Error");
-                
-            }
-        }
-
         private void timer1_Tick(object sender, EventArgs e)//定时器
         {
-            m_iCount++;
-            txtReadCount.Text = "Polling " + m_iCount.ToString() + " times...";
             RefreshAdam5017ChannelValue();
-
         }
 
         private bool RefreshChannelRange()//通道范围刷新

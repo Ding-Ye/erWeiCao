@@ -29,17 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.buttonStart = new System.Windows.Forms.Button();
             this.txtAIValue5 = new System.Windows.Forms.TextBox();
             this.txtAIValue4 = new System.Windows.Forms.TextBox();
             this.txtAIValue3 = new System.Windows.Forms.TextBox();
             this.txtAIValue2 = new System.Windows.Forms.TextBox();
             this.txtAIValue1 = new System.Windows.Forms.TextBox();
             this.txtAIValue0 = new System.Windows.Forms.TextBox();
-            this.txtReadCount = new System.Windows.Forms.TextBox();
-            this.txtModule = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtAIValue7 = new System.Windows.Forms.TextBox();
             this.txtAIValue6 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -102,16 +97,6 @@
             this.label34 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // buttonStart
-            // 
-            this.buttonStart.Location = new System.Drawing.Point(240, 4);
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(75, 23);
-            this.buttonStart.TabIndex = 33;
-            this.buttonStart.Text = "Start";
-            this.buttonStart.UseVisualStyleBackColor = true;
-            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
-            // 
             // txtAIValue5
             // 
             this.txtAIValue5.Location = new System.Drawing.Point(99, 265);
@@ -153,39 +138,6 @@
             this.txtAIValue0.Name = "txtAIValue0";
             this.txtAIValue0.Size = new System.Drawing.Size(119, 21);
             this.txtAIValue0.TabIndex = 27;
-            // 
-            // txtReadCount
-            // 
-            this.txtReadCount.Location = new System.Drawing.Point(90, 39);
-            this.txtReadCount.Name = "txtReadCount";
-            this.txtReadCount.ReadOnly = true;
-            this.txtReadCount.Size = new System.Drawing.Size(119, 21);
-            this.txtReadCount.TabIndex = 26;
-            // 
-            // txtModule
-            // 
-            this.txtModule.Location = new System.Drawing.Point(90, 6);
-            this.txtModule.Name = "txtModule";
-            this.txtModule.Size = new System.Drawing.Size(119, 21);
-            this.txtModule.TabIndex = 25;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 12);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Read count:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 12);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Module name:";
             // 
             // txtAIValue7
             // 
@@ -730,39 +682,27 @@
             this.Controls.Add(this.txtAIIValue0);
             this.Controls.Add(this.txtAIValue7);
             this.Controls.Add(this.txtAIValue6);
-            this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.txtAIValue5);
             this.Controls.Add(this.txtAIValue4);
             this.Controls.Add(this.txtAIValue3);
             this.Controls.Add(this.txtAIValue2);
             this.Controls.Add(this.txtAIValue1);
             this.Controls.Add(this.txtAIValue0);
-            this.Controls.Add(this.txtReadCount);
-            this.Controls.Add(this.txtModule);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Adam5013_17_18 sample program (C#)";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.TextBox txtAIValue5;
         private System.Windows.Forms.TextBox txtAIValue4;
         private System.Windows.Forms.TextBox txtAIValue3;
         private System.Windows.Forms.TextBox txtAIValue2;
         private System.Windows.Forms.TextBox txtAIValue1;
         private System.Windows.Forms.TextBox txtAIValue0;
-        private System.Windows.Forms.TextBox txtReadCount;
-        private System.Windows.Forms.TextBox txtModule;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAIValue7;
         private System.Windows.Forms.TextBox txtAIValue6;
         private System.Windows.Forms.Timer timer1;
