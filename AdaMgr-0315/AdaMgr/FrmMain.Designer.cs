@@ -32,30 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.lbDigitalMeter0 = new LBSoft.IndustrialCtrls.Meters.LBDigitalMeter();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.lbButton8 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lbLed2 = new LBSoft.IndustrialCtrls.Leds.LBLed();
-            this.lbLed1 = new LBSoft.IndustrialCtrls.Leds.LBLed();
-            this.lbButton5 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
-            this.lbButton4 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.lbButton7 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
-            this.lbButton6 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
-            this.lbButton3 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
-            this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label45 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -121,28 +97,36 @@
             this.lbButton90 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
             this.lbButton1 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
             this.lbButton2 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.lbButton10 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.lbDigitalMeter1 = new LBSoft.IndustrialCtrls.Meters.LBDigitalMeter();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbDigitalMeter0 = new LBSoft.IndustrialCtrls.Meters.LBDigitalMeter();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label35 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lbButton4 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
+            this.lbButton5 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
+            this.lbLed1 = new LBSoft.IndustrialCtrls.Leds.LBLed();
+            this.lbLed2 = new LBSoft.IndustrialCtrls.Leds.LBLed();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbButton8 = new LBSoft.IndustrialCtrls.Buttons.LBButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -157,349 +141,20 @@
             this.timer2.Interval = 60000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // lbDigitalMeter0
-            // 
-            this.lbDigitalMeter0.BackColor = System.Drawing.Color.Black;
-            this.lbDigitalMeter0.ForeColor = System.Drawing.Color.Lime;
-            this.lbDigitalMeter0.Format = "0000";
-            this.lbDigitalMeter0.Location = new System.Drawing.Point(21, 47);
-            this.lbDigitalMeter0.Name = "lbDigitalMeter0";
-            this.lbDigitalMeter0.Renderer = null;
-            this.lbDigitalMeter0.Signed = false;
-            this.lbDigitalMeter0.Size = new System.Drawing.Size(46, 23);
-            this.lbDigitalMeter0.TabIndex = 1;
-            this.lbDigitalMeter0.Value = 0D;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.Teal;
-            this.groupBox3.Controls.Add(this.panel1);
-            this.groupBox3.Controls.Add(this.groupBox4);
-            this.groupBox3.Controls.Add(this.pictureBox6);
-            this.groupBox3.Controls.Add(this.label35);
-            this.groupBox3.Controls.Add(this.panel2);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.lbDigitalMeter0);
-            this.groupBox3.Controls.Add(this.pictureBox2);
-            this.groupBox3.Controls.Add(this.trackBar2);
-            this.groupBox3.Controls.Add(this.pictureBox3);
-            this.groupBox3.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox3.Location = new System.Drawing.Point(313, 1);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(243, 667);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "水位调节";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(88, 47);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(42, 344);
-            this.panel1.TabIndex = 4;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.lbButton8);
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.lbLed2);
-            this.groupBox4.Controls.Add(this.lbLed1);
-            this.groupBox4.Controls.Add(this.lbButton5);
-            this.groupBox4.Controls.Add(this.lbButton4);
-            this.groupBox4.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox4.Location = new System.Drawing.Point(0, 473);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(243, 194);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "水位控制";
-            // 
-            // lbButton8
-            // 
-            this.lbButton8.BackColor = System.Drawing.Color.Transparent;
-            this.lbButton8.ButtonColor = System.Drawing.Color.LightCyan;
-            this.lbButton8.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbButton8.Label = "确定";
-            this.lbButton8.Location = new System.Drawing.Point(150, 24);
-            this.lbButton8.Name = "lbButton8";
-            this.lbButton8.Renderer = null;
-            this.lbButton8.RepeatInterval = 100;
-            this.lbButton8.RepeatState = false;
-            this.lbButton8.Size = new System.Drawing.Size(56, 43);
-            this.lbButton8.StartRepeatInterval = 500;
-            this.lbButton8.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
-            this.lbButton8.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Elliptical;
-            this.lbButton8.TabIndex = 4;
-            this.lbButton8.Click += new System.EventHandler(this.lbButton8_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(41, 29);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(59, 30);
-            this.textBox1.TabIndex = 3;
-            // 
-            // lbLed2
-            // 
-            this.lbLed2.BackColor = System.Drawing.Color.Transparent;
-            this.lbLed2.BlinkInterval = 500;
-            this.lbLed2.Label = "下降指示灯";
-            this.lbLed2.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Left;
-            this.lbLed2.LedColor = System.Drawing.Color.Red;
-            this.lbLed2.LedSize = new System.Drawing.SizeF(30F, 30F);
-            this.lbLed2.Location = new System.Drawing.Point(115, 144);
-            this.lbLed2.Name = "lbLed2";
-            this.lbLed2.Renderer = null;
-            this.lbLed2.Size = new System.Drawing.Size(112, 33);
-            this.lbLed2.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.Off;
-            this.lbLed2.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
-            this.lbLed2.TabIndex = 2;
-            // 
-            // lbLed1
-            // 
-            this.lbLed1.BackColor = System.Drawing.Color.Transparent;
-            this.lbLed1.BlinkInterval = 500;
-            this.lbLed1.Label = "上升指示灯";
-            this.lbLed1.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Left;
-            this.lbLed1.LedColor = System.Drawing.Color.Red;
-            this.lbLed1.LedSize = new System.Drawing.SizeF(30F, 30F);
-            this.lbLed1.Location = new System.Drawing.Point(116, 93);
-            this.lbLed1.Name = "lbLed1";
-            this.lbLed1.Renderer = null;
-            this.lbLed1.Size = new System.Drawing.Size(112, 33);
-            this.lbLed1.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.Off;
-            this.lbLed1.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
-            this.lbLed1.TabIndex = 2;
-            // 
-            // lbButton5
-            // 
-            this.lbButton5.BackColor = System.Drawing.Color.Transparent;
-            this.lbButton5.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lbButton5.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbButton5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbButton5.Label = "下降";
-            this.lbButton5.Location = new System.Drawing.Point(17, 143);
-            this.lbButton5.Name = "lbButton5";
-            this.lbButton5.Renderer = null;
-            this.lbButton5.RepeatInterval = 100;
-            this.lbButton5.RepeatState = false;
-            this.lbButton5.Size = new System.Drawing.Size(99, 43);
-            this.lbButton5.StartRepeatInterval = 500;
-            this.lbButton5.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
-            this.lbButton5.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Elliptical;
-            this.lbButton5.TabIndex = 1;
-            this.lbButton5.Click += new System.EventHandler(this.lbButton5_Click);
-            // 
-            // lbButton4
-            // 
-            this.lbButton4.BackColor = System.Drawing.Color.Transparent;
-            this.lbButton4.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lbButton4.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbButton4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbButton4.Label = "上升";
-            this.lbButton4.Location = new System.Drawing.Point(19, 84);
-            this.lbButton4.Name = "lbButton4";
-            this.lbButton4.Renderer = null;
-            this.lbButton4.RepeatInterval = 100;
-            this.lbButton4.RepeatState = false;
-            this.lbButton4.Size = new System.Drawing.Size(99, 43);
-            this.lbButton4.StartRepeatInterval = 500;
-            this.lbButton4.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
-            this.lbButton4.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Elliptical;
-            this.lbButton4.TabIndex = 1;
-            this.lbButton4.Click += new System.EventHandler(this.lbButton4_Click);
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(94, 404);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(28, 28);
-            this.pictureBox6.TabIndex = 7;
-            this.pictureBox6.TabStop = false;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(153, 417);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(41, 12);
-            this.label35.TabIndex = 0;
-            this.label35.Text = "电磁阀";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Lime;
-            this.panel2.Location = new System.Drawing.Point(88, 49);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(42, 344);
-            this.panel2.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 308);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "液位传感器";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 121);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "水位测量器";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 34);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(172, 372);
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            // 
-            // trackBar2
-            // 
-            this.trackBar2.BackColor = System.Drawing.Color.Teal;
-            this.trackBar2.Location = new System.Drawing.Point(192, 34);
-            this.trackBar2.Maximum = 30;
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar2.Size = new System.Drawing.Size(45, 373);
-            this.trackBar2.TabIndex = 1;
-            this.trackBar2.ValueChanged += new System.EventHandler(this.trackBar2_ValueChanged);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(94, 425);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(147, 56);
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.BackColor = System.Drawing.Color.Teal;
-            this.groupBox5.Controls.Add(this.groupBox6);
-            this.groupBox5.Controls.Add(this.zedGraphControl2);
-            this.groupBox5.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox5.Location = new System.Drawing.Point(796, 1);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(211, 667);
-            this.groupBox5.TabIndex = 4;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "显示负压计读数";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.BackColor = System.Drawing.Color.Teal;
-            this.groupBox6.Controls.Add(this.lbButton7);
-            this.groupBox6.Controls.Add(this.lbButton6);
-            this.groupBox6.Controls.Add(this.lbButton3);
-            this.groupBox6.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox6.Location = new System.Drawing.Point(0, 473);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(210, 194);
-            this.groupBox6.TabIndex = 8;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "控制部分";
-            // 
-            // lbButton7
-            // 
-            this.lbButton7.BackColor = System.Drawing.Color.Transparent;
-            this.lbButton7.ButtonColor = System.Drawing.Color.LightCyan;
-            this.lbButton7.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbButton7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbButton7.Label = "保存图像";
-            this.lbButton7.Location = new System.Drawing.Point(63, 135);
-            this.lbButton7.Name = "lbButton7";
-            this.lbButton7.Renderer = null;
-            this.lbButton7.RepeatInterval = 100;
-            this.lbButton7.RepeatState = false;
-            this.lbButton7.Size = new System.Drawing.Size(108, 42);
-            this.lbButton7.StartRepeatInterval = 500;
-            this.lbButton7.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
-            this.lbButton7.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Rectangular;
-            this.lbButton7.TabIndex = 7;
-            this.lbButton7.Click += new System.EventHandler(this.lbButton7_Click);
-            // 
-            // lbButton6
-            // 
-            this.lbButton6.BackColor = System.Drawing.Color.Transparent;
-            this.lbButton6.ButtonColor = System.Drawing.Color.LightCyan;
-            this.lbButton6.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbButton6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbButton6.Label = "显示图像";
-            this.lbButton6.Location = new System.Drawing.Point(63, 75);
-            this.lbButton6.Name = "lbButton6";
-            this.lbButton6.Renderer = null;
-            this.lbButton6.RepeatInterval = 100;
-            this.lbButton6.RepeatState = false;
-            this.lbButton6.Size = new System.Drawing.Size(108, 42);
-            this.lbButton6.StartRepeatInterval = 500;
-            this.lbButton6.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
-            this.lbButton6.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Rectangular;
-            this.lbButton6.TabIndex = 6;
-            this.lbButton6.Click += new System.EventHandler(this.lbButton6_Click);
-            // 
-            // lbButton3
-            // 
-            this.lbButton3.BackColor = System.Drawing.Color.Transparent;
-            this.lbButton3.ButtonColor = System.Drawing.Color.LightCyan;
-            this.lbButton3.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbButton3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbButton3.Label = "开始读数";
-            this.lbButton3.Location = new System.Drawing.Point(63, 20);
-            this.lbButton3.Name = "lbButton3";
-            this.lbButton3.Renderer = null;
-            this.lbButton3.RepeatInterval = 100;
-            this.lbButton3.RepeatState = false;
-            this.lbButton3.Size = new System.Drawing.Size(108, 41);
-            this.lbButton3.StartRepeatInterval = 500;
-            this.lbButton3.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
-            this.lbButton3.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Rectangular;
-            this.lbButton3.TabIndex = 6;
-            this.lbButton3.Click += new System.EventHandler(this.lbButton3_Click);
-            // 
-            // zedGraphControl2
-            // 
-            this.zedGraphControl2.EditModifierKeys = System.Windows.Forms.Keys.None;
-            this.zedGraphControl2.Location = new System.Drawing.Point(6, 34);
-            this.zedGraphControl2.Name = "zedGraphControl2";
-            this.zedGraphControl2.ScrollGrace = 0D;
-            this.zedGraphControl2.ScrollMaxX = 0D;
-            this.zedGraphControl2.ScrollMaxY = 0D;
-            this.zedGraphControl2.ScrollMaxY2 = 0D;
-            this.zedGraphControl2.ScrollMinX = 0D;
-            this.zedGraphControl2.ScrollMinY = 0D;
-            this.zedGraphControl2.ScrollMinY2 = 0D;
-            this.zedGraphControl2.Size = new System.Drawing.Size(204, 436);
-            this.zedGraphControl2.TabIndex = 5;
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Teal;
             this.groupBox1.Controls.Add(this.label45);
             this.groupBox1.Controls.Add(this.panel6);
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label34);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.panel5);
             this.groupBox1.Controls.Add(this.panel4);
             this.groupBox1.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox1.Location = new System.Drawing.Point(2, 1);
+            this.groupBox1.Location = new System.Drawing.Point(213, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(305, 662);
+            this.groupBox1.Size = new System.Drawing.Size(305, 667);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "温度与含水率、基质势";
@@ -1079,7 +734,7 @@
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.button1);
-            this.panel3.Location = new System.Drawing.Point(4, 41);
+            this.panel3.Location = new System.Drawing.Point(222, 46);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(70, 424);
             this.panel3.TabIndex = 7;
@@ -1104,7 +759,7 @@
             this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button12.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button12.Location = new System.Drawing.Point(2, 33);
+            this.button12.Location = new System.Drawing.Point(1, 30);
             this.button12.Margin = new System.Windows.Forms.Padding(1);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(65, 32);
@@ -1274,7 +929,7 @@
             this.groupBox2.Controls.Add(this.lbButton1);
             this.groupBox2.Controls.Add(this.lbButton2);
             this.groupBox2.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox2.Location = new System.Drawing.Point(2, 474);
+            this.groupBox2.Location = new System.Drawing.Point(0, 470);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(305, 194);
             this.groupBox2.TabIndex = 6;
@@ -1357,101 +1012,251 @@
             this.lbButton2.TabIndex = 1;
             this.lbButton2.Click += new System.EventHandler(this.lbButton2_Click_1);
             // 
-            // groupBox7
+            // pictureBox3
             // 
-            this.groupBox7.BackColor = System.Drawing.Color.Teal;
-            this.groupBox7.Controls.Add(this.lbButton10);
-            this.groupBox7.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox7.Location = new System.Drawing.Point(561, 474);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(229, 194);
-            this.groupBox7.TabIndex = 8;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "称重部分";
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(94, 425);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(147, 56);
+            this.pictureBox3.TabIndex = 6;
+            this.pictureBox3.TabStop = false;
             // 
-            // lbButton10
+            // trackBar2
             // 
-            this.lbButton10.BackColor = System.Drawing.Color.White;
-            this.lbButton10.ButtonColor = System.Drawing.Color.LightCyan;
-            this.lbButton10.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.lbButton10.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbButton10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbButton10.Label = "开始称重";
-            this.lbButton10.Location = new System.Drawing.Point(68, 74);
-            this.lbButton10.Name = "lbButton10";
-            this.lbButton10.Renderer = null;
-            this.lbButton10.RepeatInterval = 100;
-            this.lbButton10.RepeatState = false;
-            this.lbButton10.Size = new System.Drawing.Size(108, 52);
-            this.lbButton10.StartRepeatInterval = 500;
-            this.lbButton10.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
-            this.lbButton10.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Rectangular;
-            this.lbButton10.TabIndex = 7;
+            this.trackBar2.BackColor = System.Drawing.Color.Teal;
+            this.trackBar2.Location = new System.Drawing.Point(192, 34);
+            this.trackBar2.Maximum = 30;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar2.Size = new System.Drawing.Size(45, 373);
+            this.trackBar2.TabIndex = 1;
+            this.trackBar2.ValueChanged += new System.EventHandler(this.trackBar2_ValueChanged);
             // 
-            // groupBox8
+            // pictureBox2
             // 
-            this.groupBox8.BackColor = System.Drawing.Color.Teal;
-            this.groupBox8.Controls.Add(this.lbDigitalMeter1);
-            this.groupBox8.Controls.Add(this.pictureBox1);
-            this.groupBox8.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox8.Location = new System.Drawing.Point(562, 1);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(228, 667);
-            this.groupBox8.TabIndex = 8;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "土箱";
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(6, 34);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(172, 372);
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
             // 
-            // lbDigitalMeter1
+            // lbDigitalMeter0
             // 
-            this.lbDigitalMeter1.BackColor = System.Drawing.Color.Black;
-            this.lbDigitalMeter1.ForeColor = System.Drawing.Color.Lime;
-            this.lbDigitalMeter1.Format = "0000";
-            this.lbDigitalMeter1.Location = new System.Drawing.Point(179, 74);
-            this.lbDigitalMeter1.Name = "lbDigitalMeter1";
-            this.lbDigitalMeter1.Renderer = null;
-            this.lbDigitalMeter1.Signed = false;
-            this.lbDigitalMeter1.Size = new System.Drawing.Size(46, 22);
-            this.lbDigitalMeter1.TabIndex = 1;
-            this.lbDigitalMeter1.Value = 0D;
+            this.lbDigitalMeter0.BackColor = System.Drawing.Color.Black;
+            this.lbDigitalMeter0.ForeColor = System.Drawing.Color.Lime;
+            this.lbDigitalMeter0.Format = "0000";
+            this.lbDigitalMeter0.Location = new System.Drawing.Point(21, 47);
+            this.lbDigitalMeter0.Name = "lbDigitalMeter0";
+            this.lbDigitalMeter0.Renderer = null;
+            this.lbDigitalMeter0.Signed = false;
+            this.lbDigitalMeter0.Size = new System.Drawing.Size(46, 23);
+            this.lbDigitalMeter0.TabIndex = 1;
+            this.lbDigitalMeter0.Value = 0D;
             // 
-            // pictureBox1
+            // label1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1, 34);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(224, 430);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 121);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "水位测量器";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 308);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "液位传感器";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Lime;
+            this.panel2.Location = new System.Drawing.Point(88, 49);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(42, 344);
+            this.panel2.TabIndex = 5;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(153, 417);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(41, 12);
+            this.label35.TabIndex = 0;
+            this.label35.Text = "电磁阀";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(94, 404);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(28, 28);
+            this.pictureBox6.TabIndex = 7;
+            this.pictureBox6.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.lbButton8);
+            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.lbLed2);
+            this.groupBox4.Controls.Add(this.lbLed1);
+            this.groupBox4.Controls.Add(this.lbButton5);
+            this.groupBox4.Controls.Add(this.lbButton4);
+            this.groupBox4.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBox4.Location = new System.Drawing.Point(0, 473);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(243, 194);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "水位控制";
+            // 
+            // lbButton4
+            // 
+            this.lbButton4.BackColor = System.Drawing.Color.Transparent;
+            this.lbButton4.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.lbButton4.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbButton4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbButton4.Label = "上升";
+            this.lbButton4.Location = new System.Drawing.Point(19, 84);
+            this.lbButton4.Name = "lbButton4";
+            this.lbButton4.Renderer = null;
+            this.lbButton4.RepeatInterval = 100;
+            this.lbButton4.RepeatState = false;
+            this.lbButton4.Size = new System.Drawing.Size(99, 43);
+            this.lbButton4.StartRepeatInterval = 500;
+            this.lbButton4.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
+            this.lbButton4.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Elliptical;
+            this.lbButton4.TabIndex = 1;
+            this.lbButton4.Click += new System.EventHandler(this.lbButton4_Click);
+            // 
+            // lbButton5
+            // 
+            this.lbButton5.BackColor = System.Drawing.Color.Transparent;
+            this.lbButton5.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.lbButton5.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbButton5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbButton5.Label = "下降";
+            this.lbButton5.Location = new System.Drawing.Point(17, 143);
+            this.lbButton5.Name = "lbButton5";
+            this.lbButton5.Renderer = null;
+            this.lbButton5.RepeatInterval = 100;
+            this.lbButton5.RepeatState = false;
+            this.lbButton5.Size = new System.Drawing.Size(99, 43);
+            this.lbButton5.StartRepeatInterval = 500;
+            this.lbButton5.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
+            this.lbButton5.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Elliptical;
+            this.lbButton5.TabIndex = 1;
+            this.lbButton5.Click += new System.EventHandler(this.lbButton5_Click);
+            // 
+            // lbLed1
+            // 
+            this.lbLed1.BackColor = System.Drawing.Color.Transparent;
+            this.lbLed1.BlinkInterval = 500;
+            this.lbLed1.Label = "上升指示灯";
+            this.lbLed1.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Left;
+            this.lbLed1.LedColor = System.Drawing.Color.Red;
+            this.lbLed1.LedSize = new System.Drawing.SizeF(30F, 30F);
+            this.lbLed1.Location = new System.Drawing.Point(116, 93);
+            this.lbLed1.Name = "lbLed1";
+            this.lbLed1.Renderer = null;
+            this.lbLed1.Size = new System.Drawing.Size(112, 33);
+            this.lbLed1.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.Off;
+            this.lbLed1.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
+            this.lbLed1.TabIndex = 2;
+            // 
+            // lbLed2
+            // 
+            this.lbLed2.BackColor = System.Drawing.Color.Transparent;
+            this.lbLed2.BlinkInterval = 500;
+            this.lbLed2.Label = "下降指示灯";
+            this.lbLed2.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Left;
+            this.lbLed2.LedColor = System.Drawing.Color.Red;
+            this.lbLed2.LedSize = new System.Drawing.SizeF(30F, 30F);
+            this.lbLed2.Location = new System.Drawing.Point(115, 144);
+            this.lbLed2.Name = "lbLed2";
+            this.lbLed2.Renderer = null;
+            this.lbLed2.Size = new System.Drawing.Size(112, 33);
+            this.lbLed2.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.Off;
+            this.lbLed2.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
+            this.lbLed2.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(41, 29);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(59, 30);
+            this.textBox1.TabIndex = 3;
+            // 
+            // lbButton8
+            // 
+            this.lbButton8.BackColor = System.Drawing.Color.Transparent;
+            this.lbButton8.ButtonColor = System.Drawing.Color.LightCyan;
+            this.lbButton8.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbButton8.Label = "确定";
+            this.lbButton8.Location = new System.Drawing.Point(150, 24);
+            this.lbButton8.Name = "lbButton8";
+            this.lbButton8.Renderer = null;
+            this.lbButton8.RepeatInterval = 100;
+            this.lbButton8.RepeatState = false;
+            this.lbButton8.Size = new System.Drawing.Size(56, 43);
+            this.lbButton8.StartRepeatInterval = 500;
+            this.lbButton8.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
+            this.lbButton8.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Elliptical;
+            this.lbButton8.TabIndex = 4;
+            this.lbButton8.Click += new System.EventHandler(this.lbButton8_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(88, 47);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(42, 344);
+            this.panel1.TabIndex = 4;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.Teal;
+            this.groupBox3.Controls.Add(this.panel1);
+            this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Controls.Add(this.pictureBox6);
+            this.groupBox3.Controls.Add(this.label35);
+            this.groupBox3.Controls.Add(this.panel2);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.lbDigitalMeter0);
+            this.groupBox3.Controls.Add(this.pictureBox2);
+            this.groupBox3.Controls.Add(this.trackBar2);
+            this.groupBox3.Controls.Add(this.pictureBox3);
+            this.groupBox3.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBox3.Location = new System.Drawing.Point(757, 1);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(243, 667);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "水位调节";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(1012, 672);
-            this.Controls.Add(this.groupBox7);
+            this.ClientSize = new System.Drawing.Size(1012, 691);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox8);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.Text = "大型蒸渗仪系统智能监测软件";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -1462,9 +1267,14 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1473,25 +1283,7 @@
 
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
-        private LBSoft.IndustrialCtrls.Meters.LBDigitalMeter lbDigitalMeter0;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton5;
-        private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton4;
-        private LBSoft.IndustrialCtrls.Leds.LBLed lbLed2;
-        private LBSoft.IndustrialCtrls.Leds.LBLed lbLed1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private ZedGraph.ZedGraphControl zedGraphControl2;
-        private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton7;
-        private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton8;
         private System.Windows.Forms.GroupBox groupBox1;
-        private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -1525,18 +1317,7 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton10;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton6;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private LBSoft.IndustrialCtrls.Meters.LBDigitalMeter lbDigitalMeter1;
         private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton2;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
@@ -1567,5 +1348,23 @@
         private System.Windows.Forms.Button button1;
         private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton20;
         private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton90;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private LBSoft.IndustrialCtrls.Meters.LBDigitalMeter lbDigitalMeter0;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton8;
+        private System.Windows.Forms.TextBox textBox1;
+        private LBSoft.IndustrialCtrls.Leds.LBLed lbLed2;
+        private LBSoft.IndustrialCtrls.Leds.LBLed lbLed1;
+        private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton5;
+        private LBSoft.IndustrialCtrls.Buttons.LBButton lbButton4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

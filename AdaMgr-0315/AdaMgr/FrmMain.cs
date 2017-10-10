@@ -52,18 +52,12 @@ namespace AdaMgr
         private int timeCount = 0;//计时器
 
         private string sqlTemp = "insert into temp_data(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,AddDatetime) value({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},now())";
-       /// <summary>
-       /// //////////////////////////////////////////////////////////////////////////////////////////
-       /// </summary>
+
         private string sqlwater = "insert into water_data(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,AddDatetime) value({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},now())";
        
         private string sqltdr = "insert into tdr_data(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,AddDatetime) value({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},now())";
        
-        
         private string sqlWaterLevel = "insert into waterlevel_data(Val,AddDatetime) value({0}, now())";
-
-        private string sqlDepressimeter = "insert into depressimeter_data(ch1,ch2,ch3,ch4,ch5,ch6,ch7,ch8,ch9,ch10,AddDatetime) value({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},now())";
-
 
         private string sql = null;
 
@@ -76,15 +70,8 @@ namespace AdaMgr
 
         private int setWaterValue = 0;
 
-        private PointPairList HgLevelReadingList = null;//负压计读数柱状图
-
         private const int HG_LEVEL_READING_COUNT = 10;//负压计读数计数
 
-        private BarItem HgLevelReadingListBar = null;
-
-        static private CLRIPISCamera ipisCamera = null; //图像处理
-
-        //
         const double kMotorSpeed = 1000 / 11.5;//控制水位的速度的常量
 
         //一定要声明成局部变量以保持对Timer的引用，否则会被垃圾收集器回收！
@@ -103,22 +90,8 @@ namespace AdaMgr
 
             WaterLevelControl();//创建水位控制新线程
 
-            //test
-            //
-
-            //TestFunc();//前期实验阶段，设置随机数作为15路温度的方法
-
-
             Adam5013GetTemp();//通过com1口，连接advantech
 
-            try
-            {
-                InitHgLevelReadingBar();//初始化负压计读书柱状图
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
             panel1.Height = 344 - (int)((344 / 3000.0) * realTimeWaterValue);//水位值显示的高度
         }
 
@@ -596,21 +569,6 @@ namespace AdaMgr
 
                 adamCom.SetComPortTimeout(500, 500, 0, 500, 0);
 
-                //m_iCount = 0; // reset the reading counter
-                //RefreshChannelRange
-                /*
-                bool bRet;
-                byte byIntegration;
-                byte m_byRange, m_byFormat;
-                bRet = adamCom.AnalogInput(m_iAddr).GetRangeIntegrationDataFormat(m_iSlot, out m_byRange, out byIntegration, out m_byFormat);
-                if (!bRet)
-                {
-                    MessageBox.Show("Get range failed!", "Error");
-                    adamCom.CloseComPort();
-                    return;
-                }
-                */
-
                 timer1.Enabled = true;
 
                 //timer1.Enabled = false;
@@ -624,51 +582,7 @@ namespace AdaMgr
 
         }
 
-        //HgLevelReadingList。初始化负压计读书柱状图
-        public void InitHgLevelReadingBar()
-        {
-            ipisCamera = new CLRIPISCamera();
 
-            if (0 != ipisCamera.OpenCamera())
-            {
-                MessageBox.Show("IPISCamera OpenCamera Faied!");
-                return;
-            }
-            this.zedGraphControl2.GraphPane.Title.Text = "负 压 计 读 数";
-            this.zedGraphControl2.GraphPane.Title.FontSpec.Size = 24f;
-            this.zedGraphControl2.GraphPane.XAxis.Title.Text = "路 数";
-            this.zedGraphControl2.GraphPane.XAxis.Title.FontSpec.Size = 18f;
-            this.zedGraphControl2.GraphPane.YAxis.Title.Text = "读 数 (单位:mm)";
-            this.zedGraphControl2.GraphPane.YAxis.Title.FontSpec.Size = 18f;
-            HgLevelReadingList = new PointPairList();
-            Random rand = new Random();
-            // this.zedGraphControl2.GraphPane.Chart.Fill = new Fill(Color.FromArgb(41, 57, 85),
-            // Color.FromArgb(200, 255, 200),90F);
-            this.zedGraphControl2.GraphPane.Chart.Fill = new Fill(Color.FromArgb(255, 255, 200));
-            this.zedGraphControl2.GraphPane.XAxis.Scale.Min = (double)0;
-            this.zedGraphControl2.GraphPane.XAxis.Scale.Max = (double)11;
-            this.zedGraphControl2.GraphPane.YAxis.Scale.Min = (double)0;
-            this.zedGraphControl2.GraphPane.YAxis.Scale.Max = (double)1000;
-            //this.zedGraphControl2.GraphPane.XAxis.Scale.FontSpec.FontColor = Color.Cyan;
-            //this.zedGraphControl2.GraphPane.YAxis.Scale.FontSpec.FontColor = Color.Cyan;
-
-            this.zedGraphControl2.GraphPane.XAxis.Scale.FontSpec.Size = 18f;
-
-            //HG_LEVEL_READING_COUNT是最多能画10路柱状图
-            for (int i = 1; i <= HG_LEVEL_READING_COUNT; i++)
-            {
-                double x = (double)i;
-                double y = (double)0;
-                HgLevelReadingList.Add(x, y);
-            }
-
-            //HgLevelReadingList
-            HgLevelReadingListBar = this.zedGraphControl2.GraphPane.AddBar("", HgLevelReadingList, Color.Green);
-            this.zedGraphControl2.AxisChange();
-            this.zedGraphControl2.Refresh();
-        }
-
-        //
         private void lbButton1_Click(object sender, EventArgs e)
         {
             SingleTemp singleTemp = new SingleTemp();
@@ -704,64 +618,6 @@ namespace AdaMgr
             water.Show();
         }
 
-
-        //负压计读数中的开始读数按钮
-        private void lbButton3_Click(object sender, EventArgs e)
-        {
-            if (null != HgLevelReadingListBar)
-            {
-                HgLevelReadingListBar.Clear();
-            }
-            HgLevelReadingList.Clear();
-            this.zedGraphControl2.GraphPane.CurveList.Clear();
-
-            //if (0 != ipisCamera.OpenCamera())
-            //{
-            //    MessageBox.Show("IPISCamera OpenCamera Faied!");
-            //    return ;
-            //}
-            unsafe
-            {
-                int* len = stackalloc int[1];
-                int* value = stackalloc int[24];
-                if (0 != ipisCamera.GetWaterlevelValue(value, len, 2))//1-就算temp，bg做差分运算
-                {
-                    MessageBox.Show("IPISCamera GetWaterlevelValue Faied!");
-                    return;
-                }
-
-                for (int i = 1; i <= (HG_LEVEL_READING_COUNT > *len ? *len : HG_LEVEL_READING_COUNT); i++)
-                {
-                    depressimeterValue[i - 1] = value[i - 1];
-                    double x = (double)i;
-                    double y = (double)value[i - 1];
-                    HgLevelReadingList.Add(x, y);
-                }
-
-                HgLevelReadingListBar = this.zedGraphControl2.GraphPane.AddBar("", HgLevelReadingList, Color.Blue);
-                BarItem.CreateBarLabels(this.zedGraphControl2.GraphPane, false, "f0", "Arial", 26, Color.Black, true, false, false);
-                this.zedGraphControl2.AxisChange();
-                this.zedGraphControl2.Refresh();
-                sql = String.Format(sqlDepressimeter, depressimeterValue[0], depressimeterValue[1], depressimeterValue[2], depressimeterValue[3], depressimeterValue[4], depressimeterValue[5], depressimeterValue[6], depressimeterValue[7], depressimeterValue[8], depressimeterValue[9]);
-
-                try
-                {
-
-                    using (MySqlCommand mysqlCommand = new MySqlCommand(sql, Login.mysqlConn))
-                    {
-                        mysqlCommand.ExecuteNonQuery();
-                    }
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("DataBase Operate Failed: " + ex.Message);
-                }
-
-            }
-
-
-
-        }
 
         //控制水位上升按钮
         private void lbButton4_Click(object sender, EventArgs e)
@@ -800,27 +656,6 @@ namespace AdaMgr
                 Adam5069SetValue(iSlot, 1, m_bDescButtom);
             }
 
-        }
-
-        //负压计读数中的显示图像按钮
-        private void lbButton6_Click(object sender, EventArgs e)
-        {
-
-            ShowPicture showPic = new ShowPicture();
-            showPic.Show();
-        }
-
-        //负压计读数中的保存图像按钮
-        private void lbButton7_Click(object sender, EventArgs e)
-        {
-            if (0 == ipisCamera.SaveImage())
-            {
-                MessageBox.Show("IPISCamera SaveImage Sucess!");
-            }
-            else
-            {
-                MessageBox.Show("IPISCamera SaveImage Failed!");
-            }
         }
 
         //水位控制部分的确定按钮
@@ -892,183 +727,9 @@ namespace AdaMgr
 
         }
 
-        //图象的
-        static public CLRIPISCamera GetCRLIPISCamera()
-        {
-            return FrmMain.ipisCamera;
-        }
-
-
-
-
-        //实时水位值随机展示，未用到
-        private void DigitalMeterDisplay()
-        {
-            lbDigitalMeter0.Value = ran.Next(0, 1001) + ran.Next(0, 10) * 0.1;
-        }
-
-        //实验前期，设置随机数作为15路温度的方法
-        public void TestFunc()
-        {
-            for (int i = 0; i < listTempLabel.Count; i++)
-            {
-                float tmp = (float)(ran.Next(20, 30) + 0.01 * ran.Next(0, 100));
-                listTempLabel[i].Text = tmp.ToString();
-                tempValue[i] = tmp;
-            }
-        }
-
-        //下面的15个函数，实验初期使用，可忽略
-        private void adamMeter1_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(1);
-            singleTemp.Show();
-            singleTemp = null;
-        }
-
-        private void adamMeter2_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(2);
-            singleTemp.Show();
-            singleTemp = null;
-        }
-
-        private void adamMeter3_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(3);
-            singleTemp.Show();
-            singleTemp = null;
-        }
-
-        private void adamMeter4_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(4);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
-        private void adamMeter5_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(5);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
-        private void adamMeter6_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(6);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
-        private void adamMeter7_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(7);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
-        private void adamMeter8_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(8);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
-        private void adamMeter9_DoubleClick_1(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(9);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
-        private void adamMeter10_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(10);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
-        private void adamMeter11_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(11);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
-        private void adamMeter12_Click(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(12);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
-        private void adamMeter13_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(13);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
-        private void adamMeter14_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(14);
-            singleTemp.Show();
-            singleTemp = null;
-        }
-
-        private void adamMeter15_DoubleClick(object sender, EventArgs e)
-        {
-            SingleTemp singleTemp = new SingleTemp(15);
-            singleTemp.Show();
-            singleTemp = null;
-
-        }
-
         private void FrmMain_Load(object sender, EventArgs e)
         {
 
         }
-
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-private void trackBar1_ValueChanged(object sender, EventArgs e)
-{
-    setWaterValue = trackBar2.Value * 100 + trackBar1.Value * 10;
-    textBox1.Text = setWaterValue.ToString();
-    //panel1.Height = 344 - (int)((344 / 3000.0) * lbDigitalMeter1.Value);
-}
-*/
-
     }
 }
