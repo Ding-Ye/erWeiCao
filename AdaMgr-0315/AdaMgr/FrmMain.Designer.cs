@@ -127,7 +127,6 @@
             // 
             // timer2
             // 
-            this.timer2.Enabled = true;
             this.timer2.Interval = 60000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
@@ -963,15 +962,15 @@
             this.lbButton8.ButtonColor = System.Drawing.Color.LightCyan;
             this.lbButton8.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbButton8.Label = "确定";
-            this.lbButton8.Location = new System.Drawing.Point(150, 24);
+            this.lbButton8.Location = new System.Drawing.Point(137, 29);
             this.lbButton8.Name = "lbButton8";
             this.lbButton8.Renderer = null;
             this.lbButton8.RepeatInterval = 100;
             this.lbButton8.RepeatState = false;
-            this.lbButton8.Size = new System.Drawing.Size(56, 43);
+            this.lbButton8.Size = new System.Drawing.Size(90, 43);
             this.lbButton8.StartRepeatInterval = 500;
             this.lbButton8.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
-            this.lbButton8.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Elliptical;
+            this.lbButton8.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Rectangular;
             this.lbButton8.TabIndex = 4;
             this.lbButton8.Click += new System.EventHandler(this.lbButton8_Click);
             // 
@@ -1029,21 +1028,22 @@
             this.lbButton5.Renderer = null;
             this.lbButton5.RepeatInterval = 100;
             this.lbButton5.RepeatState = false;
-            this.lbButton5.Size = new System.Drawing.Size(99, 43);
+            this.lbButton5.Size = new System.Drawing.Size(99, 45);
             this.lbButton5.StartRepeatInterval = 500;
             this.lbButton5.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
-            this.lbButton5.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Elliptical;
+            this.lbButton5.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Rectangular;
             this.lbButton5.TabIndex = 1;
             this.lbButton5.Click += new System.EventHandler(this.lbButton5_Click);
             // 
             // lbButton4
             // 
             this.lbButton4.BackColor = System.Drawing.Color.Transparent;
+            this.lbButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.lbButton4.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lbButton4.Font = new System.Drawing.Font("宋体", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbButton4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbButton4.Label = "上升";
-            this.lbButton4.Location = new System.Drawing.Point(19, 84);
+            this.lbButton4.Location = new System.Drawing.Point(17, 83);
             this.lbButton4.Name = "lbButton4";
             this.lbButton4.Renderer = null;
             this.lbButton4.RepeatInterval = 100;
@@ -1051,7 +1051,7 @@
             this.lbButton4.Size = new System.Drawing.Size(99, 43);
             this.lbButton4.StartRepeatInterval = 500;
             this.lbButton4.State = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonState.Normal;
-            this.lbButton4.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Elliptical;
+            this.lbButton4.Style = LBSoft.IndustrialCtrls.Buttons.LBButton.ButtonStyle.Rectangular;
             this.lbButton4.TabIndex = 1;
             this.lbButton4.Click += new System.EventHandler(this.lbButton4_Click);
             // 

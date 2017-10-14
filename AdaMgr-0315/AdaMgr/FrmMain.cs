@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -94,117 +95,6 @@ namespace AdaMgr
             AdamOpenCom(); //打开端口
 
             panel1.Height = 344 - (int)((344 / 3000.0) * realTimeWaterValue);//水位值显示的高度
-        }
-
-        //温度,含水率“标尺”的初始化
-        public void AdamMeterFromInit()
-        {
-
-            //15路 含水率 lablel3--label17
-            listTempLabel.Add(label3);
-            listTempLabel.Add(label4);
-            listTempLabel.Add(label5);
-            listTempLabel.Add(label6);
-            listTempLabel.Add(label7);
-            listTempLabel.Add(label8);
-            listTempLabel.Add(label9);
-            listTempLabel.Add(label10);
-
-
-            //温度label19--label33
-            listTdrLabel.Add(label19);
-            listTdrLabel.Add(label20);
-            listTdrLabel.Add(label21);
-            listTdrLabel.Add(label22);
-            listTdrLabel.Add(label23);
-            listTdrLabel.Add(label24);
-            listTdrLabel.Add(label25);
-            listTdrLabel.Add(label26);
-            listTdrLabel.Add(label29);
-            listTdrLabel.Add(label30);
-            listTdrLabel.Add(label31);
-
-
-            //基质势label
-            listMpLabel.Add(label44);
-            listMpLabel.Add(label43);
-            listMpLabel.Add(label42);
-            listMpLabel.Add(label41);
-            listMpLabel.Add(label40);
-            listMpLabel.Add(label39);
-            listMpLabel.Add(label38);
-            listMpLabel.Add(label37);
-            listMpLabel.Add(label36);
-            listMpLabel.Add(label32);
-            listMpLabel.Add(label33);
-
-
-            for (int i = 0; i < listTempLabel.Count; i++)     //cout为集合中包含的元素数
-            {
-                //double temp = ran.Next(6, 12) + 0.01 * ran.Next(0, 100);
-                // string str = temp >= 10 ? String.Format("{0:F}", temp) : "0" + String.Format("{0:F}", temp);
-                // listTempLabel[i].Text = (ran.Next(6, 12) + 0.01 * ran.Next(0, 100)).ToString("00.00");
-
-                listTempLabel[i].Text = 0.ToString("00.00");//设置温度label的显示格式
-
-                //listTempLabel[i].DisplayLedOnColor = System.Drawing.Color.Green;
-            }
-            //3.9
-
-            for (int i = 0; i < listTdrLabel.Count; i++)
-            {
-                //listTdrLabel[i].Text = (ran.Next(20, 30) + 0.01 * ran.Next(0, 100)).ToString();
-
-                //随机设置含水率label的数值，产生50.00—69.99之间的随机数,//含水率要改
-                //listTdrLabel[i].Text = String.Format("{0:F}", ran.Next(50, 70) + 0.01 * ran.Next(0, 100));
-
-                listTdrLabel[i].Text = 0.ToString("00.00");
-                //listTempLabel[i].DisplayLedOnColor = System.Drawing.Color.Green;
-            }
-
-            for (int i = 0; i < listMpLabel.Count; i++)     //cout为集合中包含的元素数
-            {
-                //double temp = ran.Next(6, 12) + 0.01 * ran.Next(0, 100);
-                // string str = temp >= 10 ? String.Format("{0:F}", temp) : "0" + String.Format("{0:F}", temp);
-                // listTempLabel[i].Text = (ran.Next(6, 12) + 0.01 * ran.Next(0, 100)).ToString("00.00");
-
-                listMpLabel[i].Text = 0.ToString("00.00");//设置温度label的显示格式
-
-                //listTempLabel[i].DisplayLedOnColor = System.Drawing.Color.Green;
-            }
-
-            //提前分配15路温度集合的空间集合，15路的集合的，每个元素再次定义为list类型
-
-            for (int i = 0; i < realTimeValue.Length; i++)
-            {
-                realTimeValue[i] = new List<double>();
-
-            }
-
-            /*
-            for (int i = 0; i < realTimeValue.Length; i++)
-            {
-                for (int j = 0; j < 60; j++ )
-                {
-                    realTimeValue[i].Add((float)(ran.Next(10, 20) + 0.01 * ran.Next(0, 100)));
-                }
-            }
-            */
-
-            // 调试阶段，只取第4,9,12路作为实时绘图温度
-            for (int j = 0; j < 2; j++)
-            {
-                realTimeValue[4].Add((double)0);
-                realTimeValue[9].Add((double)0.5);
-                realTimeValue[12].Add((double)1);
-            }
-            /*          for (int j = 0; j < 2; j++)
-                      {
-                          realTimeValue[4].Add((float)(ran.Next(6, 8) + 0.01 * ran.Next(0, 100)));
-                          realTimeValue[9].Add((float)(ran.Next(8, 10) + 0.01 * ran.Next(0, 100)));
-                          realTimeValue[12].Add((float)(ran.Next(10, 12) + 0.01 * ran.Next(0, 100)));
-                      }
-          */
         }
 
         //创建水位控制模块新线程，外网控制
@@ -363,14 +253,11 @@ namespace AdaMgr
      
         }
 
-        //timer1做的所有事!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //timer1做的所有事!!!!!!!!!!!
         private void timer1_Tick(object sender, EventArgs e)
         {
-
-            // this.Adam5017GetWaterLevel();//获取水位值，并显示到图中
-           // Adam5017GetVlote();
             Adam5017GetVlote();
-            if (m_iSlot >= 0 && m_iSlot < 3)
+            if (m_iSlot >= 0 && m_iSlot < 3)//0-3c槽循环
             {
                 m_iSlot++;
             }
@@ -739,6 +626,32 @@ namespace AdaMgr
                             label8.Text = fVal[5].ToString(szFormat);
                             label9.Text = fVal[6].ToString(szFormat);
                             label10.Text = fVal[7].ToString(szFormat); 
+
+          if (!File.Exists("H:\\TEST.txt"))  
+         {
+             StreamWriter strmsave = new StreamWriter("H:\\TEST.txt", true, System.Text.Encoding.Default);
+             strmsave.Write(label3.Text+"\r\n");
+             strmsave.Close();  
+             //FileStream fs1 = new FileStream("F:\\TestTxt.txt", FileMode.Create, FileAccess.Write);//创建写入文件   
+             //StreamWriter sw = new StreamWriter(fs1);  
+             //sw.Write("你好" + this.textBox2.Text);//开始写入值  
+             //sw.Close();  
+             //fs1.Close();  
+  
+         }  
+         //F:\\TestTxt.txt存在这个文档的话直接打开写入。  
+         else  
+         {
+             StreamWriter strmsave = new StreamWriter("H:\\TEST.txt", true, System.Text.Encoding.Default);
+             strmsave.Write(label3.Text + "\r\n");
+             strmsave.Close();  
+  
+    
+         }  
+      
+
+
+
                             break;
                         }
 

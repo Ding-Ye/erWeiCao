@@ -27,7 +27,7 @@ namespace AdaMgr
             try
             {
                 //连接数据库的命令
-                mysqlConn = new MySqlConnection("server=localhost;user id=root;password='admin';database=waterlab");
+                mysqlConn = new MySqlConnection("server=localhost;user id=root;password='admin';database=waterlab");//连接本地数据
                 mysqlConn.Open();
             }
             catch (MySqlException ex)
